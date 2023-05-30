@@ -9,6 +9,23 @@ computer_cards = []
 is_game_over = False
 
 
+def compare_score(score1, score2):
+    if score1 == score2:
+        return "Draw!"
+    elif score2 == 0:
+        return "Computer wins BlackJack Baby!!"
+    elif score1 == 0:
+        return "Player wins BlackJack Baby!!"
+    elif score1 > 21:
+        return "Player went bust! Computer wins!!"
+    elif score2 > 21:
+        return "Computer went bust! Player wins!!"
+    elif score1 > score2:
+        return "You Win"
+    else:
+        return "You have lost"
+
+
 def deal_card():
     """ Return a random card from the deck """
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]  # simple card deck
@@ -84,6 +101,7 @@ while computer_score != 0 and computer_score < 17:
 
 print(f"Player Score: {user_score}")
 print(f"Computer Score: {computer_score}")
-
+result = compare_score(user_score, computer_score)
+print(result)
 
 input("\n\nPress enter to exit ")
