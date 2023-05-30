@@ -78,5 +78,12 @@ while not is_game_over:
         else:
             is_game_over = True
 
+while computer_score != 0 and computer_score < 17:
+    computer_cards.append(deal_card())
+    computer_score = calculate_score(computer_cards)
+
+print(f"Player Score: {user_score}")
+print(f"Computer Score: {computer_score}")
+
 
 input("\n\nPress enter to exit ")
