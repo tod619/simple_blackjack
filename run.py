@@ -33,8 +33,8 @@ for round in range(2):
 
 def calculate_score(card_hand):
     """ A function to calculate the value of a hand of cards """
-    # if 11 in card_hand and 10 in card_hand and len(card_hand) == 2:
-    if sum(card_hand) == 21 and len(card_hand) == 2:
+    if 11 in card_hand and 10 in card_hand and len(card_hand) == 2:
+        # if sum(card_hand) == 21 and len(card_hand) == 2:
         return 0
 
     if 11 in card_hand and sum(card_hand) > 21:
@@ -55,5 +55,28 @@ print(f"Computers First Card: {computer_cards[0]}")
 
 if user_score == 0 or computer_score == 0 or user_score > 21:
     is_game_over = True
+else:
+    user_hit = input("Type y to hit or n to stand: ").lower()
+    if user_hit == "y":
+        user_cards.append(deal_card())
+    else:
+        is_game_over = True
+
+while not is_game_over:
+    user_score = calculate_score(user_cards)
+    computer_score = calculate_score(computer_cards)
+
+    print(f"Player Cards: {user_cards} Player Score: {user_score}")
+    print(f"Computers First Card: {computer_cards[0]}")
+
+    if user_score == 0 or computer_score == 0 or user_score > 21:
+        is_game_over = True
+    else:
+        user_hit = input("Type y to hit or n to stand: ").lower()
+        if user_hit == "y":
+            user_cards.append(deal_card())
+        else:
+            is_game_over = True
+
 
 input("\n\nPress enter to exit ")
